@@ -7,7 +7,10 @@
 //
 
 import SpriteKit
+#if os(iOS)
+#elseif os(watchOS)
 import WatchKit
+#endif
 
 class GameScene: SKScene {
     var bird: SKSpriteNode = SKSpriteNode()
@@ -215,7 +218,10 @@ class GameScene: SKScene {
     
     public func tapGesture() {
         if moving.speed > 0  {
+            #if os(iOS)
+            #elseif os(watchOS)
             WKInterfaceDevice.current().play(.start)
+            #endif
             bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 2))
         } else if canRestart {
