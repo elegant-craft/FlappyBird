@@ -8,7 +8,7 @@
 import SwiftUI
 import SpriteKit
 
-public struct ContentView3: View{ //
+public struct ContentView3: View{
     @Binding var isPresented: Bool
     
     public init(isPresented: Binding<Bool>) {

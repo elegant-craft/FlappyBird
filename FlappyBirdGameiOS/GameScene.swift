@@ -7,13 +7,12 @@
 //
 
 import SpriteKit
-import WatchKit
 
 class GameScene: SKScene {
     var bird: SKSpriteNode = SKSpriteNode()
     var skyColor: SKColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
-    var pipeTextureUp: SKTexture = SKTexture(image: UIImage(named: "PipeUp", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
-    var pipeTextureDown: SKTexture = SKTexture(image: UIImage(named: "PipeDown", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+    var pipeTextureUp: SKTexture = SKTexture(image: UIImage(named: "PipeUp", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGameiOS"), with: nil)!)
+    var pipeTextureDown: SKTexture = SKTexture(image: UIImage(named: "PipeDown", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGameiOS"), with: nil)!)
     var movePipesAndRemove: SKAction = SKAction()
     var moving: SKNode = SKNode()
     var pipes: SKNode = SKNode()
@@ -43,7 +42,7 @@ class GameScene: SKScene {
         self.scaleMode = .aspectFill
         
         // ground
-        let groundTexture = SKTexture(image: UIImage(named: "land", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        let groundTexture = SKTexture(image: UIImage(named: "land", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGameiOS"), with: nil)!)
         groundTexture.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
         
         let groundTextureWidth = groundTexture.size().width * 2.0
@@ -60,7 +59,7 @@ class GameScene: SKScene {
         }
         
         // skyline
-        let skyTexture = SKTexture(image: UIImage(named: "sky", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        let skyTexture = SKTexture(image: UIImage(named: "sky", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGameiOS"), with: nil)!)
         skyTexture.filteringMode = .nearest
         
         let skyTextureWidth = skyTexture.size().width / 2.0
@@ -95,9 +94,9 @@ class GameScene: SKScene {
         self.run(spawnThenDelayForever)
         
         // setup our bird
-        let birdTexture1 = SKTexture(image: UIImage(named: "pig-01", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        let birdTexture1 = SKTexture(image: UIImage(named: "pig-01", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGameiOS"), with: nil)!)
         birdTexture1.filteringMode = .nearest
-        let birdTexture2 = SKTexture(image: UIImage(named: "pig-02", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        let birdTexture2 = SKTexture(image: UIImage(named: "pig-02", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGameiOS"), with: nil)!)
         birdTexture2.filteringMode = .nearest
         
         let anim = SKAction.animate(with: [birdTexture1, birdTexture2], timePerFrame: 0.2)
@@ -215,7 +214,6 @@ class GameScene: SKScene {
     
     public func tapGesture() {
         if moving.speed > 0  {
-            WKInterfaceDevice.current().play(.start)
             bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 2))
         } else if canRestart {

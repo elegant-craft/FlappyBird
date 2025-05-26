@@ -15,6 +15,7 @@
 		183607452DE01D33001BFE41 /* FlappyBirdGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlappyBirdGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1836075B2DE01DE6001BFE41 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		1836075D2DE01F06001BFE41 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		18F373542DE4154D007266F3 /* FlappyBirdGameiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlappyBirdGameiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -24,6 +25,13 @@
 				FlappyBirdGame.h,
 			);
 			target = 183607442DE01D33001BFE41 /* FlappyBirdGame */;
+		};
+		18F3735A2DE4154E007266F3 /* Exceptions for "FlappyBirdGameiOS" folder in "FlappyBirdGameiOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			publicHeaders = (
+				FlappyBirdGameiOS.h,
+			);
+			target = 18F373532DE4154D007266F3 /* FlappyBirdGameiOS */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -36,10 +44,25 @@
 			path = FlappyBirdGame;
 			sourceTree = "<group>";
 		};
+		18F373552DE4154E007266F3 /* FlappyBirdGameiOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				18F3735A2DE4154E007266F3 /* Exceptions for "FlappyBirdGameiOS" folder in "FlappyBirdGameiOS" target */,
+			);
+			path = FlappyBirdGameiOS;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		183607422DE01D33001BFE41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F373512DE4154D007266F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,6 +78,7 @@
 				1836075D2DE01F06001BFE41 /* README.md */,
 				1836075B2DE01DE6001BFE41 /* LICENSE.txt */,
 				183607472DE01D33001BFE41 /* FlappyBirdGame */,
+				18F373552DE4154E007266F3 /* FlappyBirdGameiOS */,
 				183607462DE01D33001BFE41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				183607452DE01D33001BFE41 /* FlappyBirdGame.framework */,
+				18F373542DE4154D007266F3 /* FlappyBirdGameiOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +96,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		183607402DE01D33001BFE41 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F3734F2DE4154D007266F3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -103,6 +135,29 @@
 			productReference = 183607452DE01D33001BFE41 /* FlappyBirdGame.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		18F373532DE4154D007266F3 /* FlappyBirdGameiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18F3735B2DE4154E007266F3 /* Build configuration list for PBXNativeTarget "FlappyBirdGameiOS" */;
+			buildPhases = (
+				18F3734F2DE4154D007266F3 /* Headers */,
+				18F373502DE4154D007266F3 /* Sources */,
+				18F373512DE4154D007266F3 /* Frameworks */,
+				18F373522DE4154D007266F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				18F373552DE4154E007266F3 /* FlappyBirdGameiOS */,
+			);
+			name = FlappyBirdGameiOS;
+			packageProductDependencies = (
+			);
+			productName = FlappyBirdGameiOS;
+			productReference = 18F373542DE4154D007266F3 /* FlappyBirdGameiOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -113,6 +168,10 @@
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					183607442DE01D33001BFE41 = {
+						CreatedOnToolsVersion = 16.1;
+						LastSwiftMigration = 1610;
+					};
+					18F373532DE4154D007266F3 = {
 						CreatedOnToolsVersion = 16.1;
 						LastSwiftMigration = 1610;
 					};
@@ -133,6 +192,7 @@
 			projectRoot = "";
 			targets = (
 				183607442DE01D33001BFE41 /* FlappyBirdGame */,
+				18F373532DE4154D007266F3 /* FlappyBirdGameiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -147,10 +207,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18F373522DE4154D007266F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		183607412DE01D33001BFE41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18F373502DE4154D007266F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -354,6 +428,81 @@
 			};
 			name = Release;
 		};
+		18F373582DE4154E007266F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengdongfuture.FlappyBirdGameiOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		18F373592DE4154E007266F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengdongfuture.FlappyBirdGameiOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -371,6 +520,15 @@
 			buildConfigurations = (
 				1836074C2DE01D33001BFE41 /* Debug */,
 				1836074D2DE01D33001BFE41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18F3735B2DE4154E007266F3 /* Build configuration list for PBXNativeTarget "FlappyBirdGameiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F373582DE4154E007266F3 /* Debug */,
+				18F373592DE4154E007266F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

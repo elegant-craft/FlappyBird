@@ -6,7 +6,6 @@
 //
 
 import SpriteKit
-import WatchKit
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
@@ -26,7 +25,6 @@ extension GameScene: SKPhysicsContactDelegate {
                 )
             } else {
                 moving.speed = 0
-                WKInterfaceDevice.current().play(.failure)
                 bird.physicsBody?.collisionBitMask = worldCategory
                 bird.run(
                     SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1),
