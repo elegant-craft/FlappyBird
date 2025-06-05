@@ -11,13 +11,20 @@
 		</dict>
 		<key>FlappyBirdGameiOS.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>183607442DE01D33001BFE41</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>18F373532DE4154D007266F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
