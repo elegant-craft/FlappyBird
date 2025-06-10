@@ -11,7 +11,7 @@ import WatchKit
 
 class GameScene: SKScene {
     var bird: SKSpriteNode = SKSpriteNode()
-    var skyColor: SKColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
+    var skyColor: SKColor = SKColor(red: 21.0/255.0, green: 19.0/255.0, blue: 98.0/255.0, alpha: 1.0)
     var pipeTextureUp: SKTexture = SKTexture(image: UIImage(named: "PipeUp", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
     var pipeTextureDown: SKTexture = SKTexture(image: UIImage(named: "PipeDown", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
     var movePipesAndRemove: SKAction = SKAction()
@@ -46,14 +46,18 @@ class GameScene: SKScene {
         let groundTexture = SKTexture(image: UIImage(named: "land", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
         groundTexture.filteringMode = .nearest // shorter form for SKTextureFilteringMode.Nearest
         
-        let groundTextureWidth = groundTexture.size().width * 2.0
+        let groundTextureWidth = WKInterfaceDevice.current().screenBounds.width * 2.0
         let moveGroundSprite = SKAction.moveBy(x: -groundTextureWidth, y: 0, duration: TimeInterval(0.02 * groundTextureWidth))
         let resetGroundSprite = SKAction.moveBy(x: groundTextureWidth, y: 0, duration: 0.0)
         let moveGroundSpritesForever = SKAction.repeatForever(SKAction.sequence([moveGroundSprite, resetGroundSprite]))
         
-        for i in 0 ..< 2 + Int(self.frame.size.width / (groundTexture.size().width / 4.0) * 2.0 ) {
+        for i in 0 ..< 2 + Int(self.frame.size.width / (WKInterfaceDevice.current().screenBounds.width / 4.0) * 2.0 ) {
             let sprite = SKSpriteNode(texture: groundTexture)
-            sprite.setScale(0.5)
+//            sprite.setScale(0.5)
+            sprite.size = CGSize(
+                width: WKInterfaceDevice.current().screenBounds.width,
+                height: WKInterfaceDevice.current().screenBounds.width / 366 * 112
+            )
             sprite.position = CGPoint(x: CGFloat(i) * sprite.size.width, y: 0)
             sprite.run(moveGroundSpritesForever)
             moving.addChild(sprite)
@@ -63,16 +67,24 @@ class GameScene: SKScene {
         let skyTexture = SKTexture(image: UIImage(named: "sky", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
         skyTexture.filteringMode = .nearest
         
-        let skyTextureWidth = skyTexture.size().width / 2.0
+//        let skyTextureWidth = WKInterfaceDevice.current().screenBounds.width * 2
+        let skyTextureWidth = WKInterfaceDevice.current().screenBounds.width
         let moveSkySprite = SKAction.moveBy(x: -skyTextureWidth, y: 0, duration: TimeInterval(0.1 * skyTextureWidth))
         let resetSkySprite = SKAction.moveBy(x: skyTextureWidth, y: 0, duration: 0.0)
         let moveSkySpritesForever = SKAction.repeatForever(SKAction.sequence([moveSkySprite,resetSkySprite]))
         
         for i in 0 ..< 2 + Int(self.frame.size.width / (skyTextureWidth / 2.0) * 2.0) {
             let sprite = SKSpriteNode(texture: skyTexture)
-            sprite.setScale(0.5)
+//            sprite.setScale(0.5)
+            sprite.size = CGSize(
+                width: WKInterfaceDevice.current().screenBounds.width,
+                height: WKInterfaceDevice.current().screenBounds.width / 1668 * 1180
+            )
             sprite.zPosition = -20
-            sprite.position = CGPoint(x: CGFloat(i) * sprite.size.width, y: sprite.size.height)
+            sprite.position = CGPoint(
+                x: CGFloat(i) * sprite.size.width,
+                y: WKInterfaceDevice.current().screenBounds.width / 1668 * 1180 / 2 + WKInterfaceDevice.current().screenBounds.width / 366 * 112 / 2 / 1.2
+            )
             sprite.run(moveSkySpritesForever)
             moving.addChild(sprite)
         }
@@ -82,7 +94,7 @@ class GameScene: SKScene {
         pipeTextureDown.filteringMode = .nearest
         
         // create the pipes movement actions
-        let distanceToMove = CGFloat(self.frame.size.width + 2.0 * pipeTextureUp.size().width)
+        let distanceToMove = CGFloat(self.frame.size.width + 2.0 * 30)
         let movePipes = SKAction.moveBy(x: -distanceToMove, y: 0.0, duration: TimeInterval(0.01 * distanceToMove))
         let removePipes = SKAction.removeFromParent()
         movePipesAndRemove = SKAction.sequence([movePipes, removePipes])
@@ -95,26 +107,25 @@ class GameScene: SKScene {
         self.run(spawnThenDelayForever)
         
         // setup our bird
-        let birdTexture1 = SKTexture(image: UIImage(named: "pig-01", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        let birdTexture1 = SKTexture(image: UIImage(named: "cloud-01", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
         birdTexture1.filteringMode = .nearest
-        let birdTexture2 = SKTexture(image: UIImage(named: "pig-02", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        let birdTexture2 = SKTexture(image: UIImage(named: "cloud-02", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
         birdTexture2.filteringMode = .nearest
         
         let anim = SKAction.animate(with: [birdTexture1, birdTexture2], timePerFrame: 0.2)
         let flap = SKAction.repeatForever(anim)
         
         bird = SKSpriteNode(texture: birdTexture1)
-        bird.setScale(0.5)
+        bird.size = CGSize(width: 176 * 0.14, height: 176 * 0.14)
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y: self.frame.size.height / 2.0)
-        bird.run(flap)
+        bird.run(flap, withKey: "flap")
         
         self.addChild(bird)
-//        bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 2))
         
         // create the ground
         let ground = SKNode()
         ground.position = CGPoint(x: 0, y: 20)
-        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: 10))
+        ground.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: 13))
         ground.physicsBody?.isDynamic = false
         ground.physicsBody?.categoryBitMask = worldCategory
         self.addChild(ground)
@@ -124,7 +135,7 @@ class GameScene: SKScene {
         scoreLabelNode.zPosition = 100
         scoreLabelNode.text = String(score)
         scoreLabelNode.fontSize = 20
-        scoreLabelNode.fontColor = .black
+        scoreLabelNode.fontColor = .white
         self.addChild(scoreLabelNode)
     }
     
@@ -132,7 +143,7 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
         if let physicsBody = bird.physicsBody {
             let value = physicsBody.velocity.dy * (physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) * 4
-            bird.zRotation = min(max(-1, value), 0.5)
+//            bird.zRotation = min(max(-1, value), 0.5)
         }
     }
     
@@ -151,7 +162,7 @@ class GameScene: SKScene {
         
         let pipePair = SKNode()
         pipePair.position = CGPoint(
-            x: self.frame.size.width + pipeTextureUp.size().width * 2,
+            x: self.frame.size.width + 30 * 2,
             y: -(self.frame.midY/2) - 20
         )
         pipePair.zPosition = -10
@@ -161,7 +172,11 @@ class GameScene: SKScene {
         
         func pipeSpriteNode(texture: SKTexture) -> SKSpriteNode {
             let node = SKSpriteNode(texture: texture)
-            node.setScale(1)
+            
+            node.size  = CGSize(width: 30, height: 160)
+            
+//            node.setScale(1)
+            
             node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
             node.physicsBody?.isDynamic = false
             node.physicsBody?.categoryBitMask = pipeCategory
@@ -190,6 +205,15 @@ class GameScene: SKScene {
     }
     
     private func resetScene() {
+        
+        let birdTexture1 = SKTexture(image: UIImage(named: "cloud-01", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        birdTexture1.filteringMode = .nearest
+        let birdTexture2 = SKTexture(image: UIImage(named: "cloud-02", in: Bundle(identifier: "com.mengdongfuture.FlappyBirdGame"), with: nil)!)
+        birdTexture2.filteringMode = .nearest
+        let anim = SKAction.animate(with: [birdTexture1, birdTexture2], timePerFrame: 0.2)
+        let flap = SKAction.repeatForever(anim)
+        bird.run(flap, withKey: "flap")
+        
         // Move bird to original position and reset velocity
         addBirdPhysicsBody()
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y: self.frame.midY)
