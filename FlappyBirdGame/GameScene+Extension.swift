@@ -34,8 +34,6 @@ extension GameScene: SKPhysicsContactDelegate {
 //                        self?.bird.speed = 0
 //                    }
 //                )
-                
-                // Flash background if contact is detected
                 self.removeAction(forKey: "flash")
                 
                 bird.removeAction(forKey: "flap")
@@ -48,7 +46,6 @@ extension GameScene: SKPhysicsContactDelegate {
                         SKAction.repeat(
                             SKAction.sequence([
                                 SKAction.run { [weak self] in
-//                                    self?.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
                                     self?.backgroundColor = SKColor(red: 1, green: 1, blue: 1, alpha: 1.0)
                                 },
                                 SKAction.wait(forDuration: TimeInterval(0.05)),
