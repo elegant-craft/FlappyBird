@@ -9,11 +9,9 @@ import SwiftUI
 import SpriteKit
 
 public struct FlappyBirdGameView: View{
-    @Binding var isPresented: Bool
     @State var screenSize: CGSize
     
-    public init(isPresented: Binding<Bool>, screenSize: CGSize) {
-        self._isPresented = isPresented
+    public init(screenSize: CGSize) {
         self.screenSize = screenSize
     }
     

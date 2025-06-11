@@ -9,10 +9,8 @@ import SwiftUI
 import SpriteKit
 
 public struct FlappyBirdGameView: View{
-    @Binding var isPresented: Bool
     
-    public init(isPresented: Binding<Bool>) {
-        self._isPresented = isPresented
+    public init() {
     }
     
     public var body: some View {
